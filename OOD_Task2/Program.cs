@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using OOD_Task2.IteratorPattern;
+using System;
 
 namespace Task2
 {
@@ -15,7 +15,7 @@ namespace Task2
             var csProject2 = new DummyDirectory("CSharpDE", csProjects);
             new DummyFile("HelloWorld.cs", "Console.WriteL----ine(\"Hallo, Welt!\");", csProject2);
 
-            var pythonProjects = new DummyDirectory("python-projects", root);
+            var pythonProjects = new DummyDirectory("pyt hon-projects", root);
             var pythonProject1 = new DummyDirectory("python-hw", pythonProjects);
             var pythonProject1Package = new DummyDirectory("hello_world", pythonProject1);
             new DummyFile("requirements.txt", "pyt---est", pythonProject1);
@@ -33,7 +33,12 @@ namespace Task2
             var dir4 = new DummyDirectory("dangerous-zone", dir3);
             new DummyFile("cats.txt.cipher", "#9U9w9W---9-#-B-9G9---A-#-u-H-xuH9", dir4);
 
+            var collection = new ConcreteTreeCollection();
+
             Console.WriteLine("--------BFS--------");
+
+            DummyNode iterator = collection.BreathFirstSearch(root);
+
             // 1. Iterate over the dummy filesystem (strating from root) in BFS order
             // For each node please print its name and contents if it's available
             // 
@@ -41,9 +46,13 @@ namespace Task2
             // if (printableContent != null)
             // {
             //     Console.WriteLine(printableContent);
-            // }
+            // };
+
             Console.WriteLine("-----------------");
             Console.WriteLine("--------DFS--------");
+
+            collection.DepthFirstSearch(root);
+
             // 2. Iterate over the dummy filesystem (strating from root) in DFS order
             // For each node please print its name and contents if it's available
             // 

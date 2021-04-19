@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace Task2
 {
-    public abstract class DummyNode : IFileSystemNode
+    using OOD_Task2.DecoratorPattern;
+    public abstract class DummyNode : IFileSystemNode, INodeDecorator
     {
-
         public string Name { get; }
         public DummyNode Parent { get; protected set; }
         public DummyNode FirstChild { get; protected set; }
@@ -49,6 +49,11 @@ namespace Task2
         public bool IsDir()
         {
             return isDir;
+        }
+
+        public string DecorateNode()
+        {
+            return '|' + Name;
         }
     }
 }
